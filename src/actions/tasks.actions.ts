@@ -51,7 +51,7 @@ export async function completeTask({
   try {
     connectMongoDB();
 
-    const task = await Tasks.findOne({ _id: taskId });
+    const task = await Tasks.find({ where: { id: taskId } });
     if (!task) return "invalidTask";
 
     const user = await User.find({ where: { chatId: userId } });
